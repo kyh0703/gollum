@@ -3,13 +3,12 @@ module github.com/kyh0703/gollum
 go 1.19
 
 require (
-	github.com/manifoldco/promptui v0.9.0
 	github.com/spf13/cobra v1.6.0
+	github.com/spf13/cobra-cli v1.3.0
 	github.com/spf13/viper v1.13.0
 )
 
 require (
-	github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e // indirect
 	github.com/fsnotify/fsnotify v1.5.4 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/inconshreveable/mousetrap v1.0.1 // indirect

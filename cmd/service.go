@@ -56,38 +56,3 @@ func (cmd *ServiceCommand) Run(command *cobra.Command, args []string) {
 	}
 	defer file.Close()
 }
-
-type promptContent struct {
-	errorMessage string
-	label        string
-}
-
-func promptGetInput(pc promptContent) string {
-	// 	validate := func(input string) error {
-	// 		if len(input) <= 0 {
-	// 			return errors.New(pc.errorMessage)
-	// 		}
-	// 		return nil
-
-	// 	  Valid:   " {{ . | green }} ",
-
-	// 		Invalid: " {{ . | red }} ",
-	// 		Success: "{{ . | bold }} ",
-	// 	}
-
-	// }
-	// 	prompt := promptui.Prompt{
-	// 		Label:     pc.label,
-	// 		Templates: templates,
-	// 		Validate:  validate,
-	// 	}
-
-	// 	result, err := prompt.Run()
-	// 	if err != nil {
-	// 		fmt.Printf("Prompt failed %v\n", err)
-	// 		os.Exit(1)
-	// 	}
-
-	// return result
-	return ""
-}

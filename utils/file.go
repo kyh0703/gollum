@@ -13,7 +13,6 @@ func (tf *TemplateFile) MakeDir(dirPath string) error {
 	if err != nil {
 		return err
 	}
-	// make service dir
 	if err := os.MkdirAll(fmt.Sprintf("%s/%s", wd, dirPath), 0o751); err != nil {
 		return err
 	}
