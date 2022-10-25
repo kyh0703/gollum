@@ -1,40 +1,43 @@
-/*
-Copyright © 2022 NAME HERE <EMAIL ADDRESS>
-*/
 package cmd
 
 import (
 	"encoding/json"
-	"fmt"
-	"os"
 	"os/exec"
 
 	"github.com/spf13/cobra"
 )
 
-// initCmd represents the init command
-var initCmd = &cobra.Command{
-	Use:   "init [path]",
-	Short: "Initialize a Gollum Application",
-	Run: func(cmd *cobra.Command, args []string) {
-		_, err := InitializeProject(args)
-		cobra.CheckErr(err)
-	},
+// command instance
+var Init *InitCommand
+
+// initialize command
+func init() {
+	Init = NewInitCommand()
+	rootCmd.AddCommand(Init.Command)
 }
 
-func InitializeProject(args []string) (string, error) {
-	wd, err := os.Getwd()
-	if err != nil {
-		return "", err
-	}
+// initCmd represents the init command
+type InitCommand struct {
+	ModName string
+	Command *cobra.Command
+}
 
-	if len(args) > 0 {
-		if args[0] != "." {
-			wd = fmt.Sprintf("%s/%s", wd, args[0])
-		}
+func NewInitCommand() *InitCommand {
+	init := new(InitCommand)
+	init.Command = &cobra.Command{
+		Use:   "init",
+		Short: "Initialize a Gollum Application",
+		Run:   init.Run,
 	}
+	return init
+}
 
-	return "", nil
+func (cmd *InitCommand) Run(command *cobra.Command, args []string) {
+	if len(args) < 1 {
+		command.Help()
+		return
+	}
+	// Check go mod file
 }
 
 func parseModInfo() (Mod, CurDir) {
@@ -61,8 +64,4 @@ func modInfoJSON(args ...string) []byte {
 
 func goGet(mod string) error {
 	return exec.Command("go", "get", mod).Run()
-}
-
-func init() {
-	rootCmd.AddCommand(initCmd)
 }

@@ -14,7 +14,6 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "gollum",
 	Short: "Generate golang mvc project",
-	Long:  "Generate golang mvc project",
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -27,6 +26,6 @@ func Execute() {
 }
 
 func init() {
-	viper.SetDefault("author", "kim yeon ho")
+	viper.SetDefault("author", "yeon")
 	viper.SetDefault("license", "MIT")
 }

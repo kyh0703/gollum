@@ -33,3 +33,4 @@ func (ctrl *{{ .Name | ToLower }}Controller) Routes(router fiber.Router) {
 func (ctrl *{{ .Name | ToLower }}Controller) Routes(router gin.Router) {
 }
 {{ end }}
+`

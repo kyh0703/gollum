@@ -1,11 +1,11 @@
 package templates
 
 var Service = `
-package {{ .Name }}
+package {{ .Name | ToLower }}
 
-type {{ .Name }}Service struct{}
+type {{ .Name | ToLower }}Service struct{}
 
-func NewAuthService() *authService {
-	return &authService{}
+func New{{ .Name | ToTitle }}Service() *authService {
+	return &{{ .Name }}Service{}
 }
 `
