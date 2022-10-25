@@ -1,14 +1,10 @@
-/*
-Copyright © 2022 NAME HERE <EMAIL ADDRESS>
-*/
 package cmd
 
 import (
 	"fmt"
 
-	util "github.com/kyh0703/gollum/utils"
+	"github.com/kyh0703/gollum/util"
 	"github.com/spf13/cobra"
-	"github.com/spf13/cobra-cli/cmd"
 )
 
 // command instance
@@ -17,7 +13,7 @@ var Service *ServiceCommand
 // initialize command
 func init() {
 	Service = NewServiceCommand()
-	rootCmd.AddCommand(cmd.Command)
+	rootCmd.AddCommand(Service.Command)
 }
 
 // serviceCommand represents the service command

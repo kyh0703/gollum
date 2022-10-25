@@ -35,7 +35,7 @@ func (p *Project) Create() error {
 		return err
 	}
 	defer mainFile.Close()
-	mainTemplate := template.Must(template.New("main").Parse(string(templates.MainTemplate)))
+	mainTemplate := template.Must(template.New("main").Parse(string(templates.Main)))
 	if err := mainTemplate.Execute(mainFile, p); err != nil {
 		return err
 	}

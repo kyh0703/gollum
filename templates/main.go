@@ -1,6 +1,6 @@
 package templates
 
-var MainTemplate = `
+var Main = `
 	/*
 	{{.Copyright}}
 	{{ if .Legal.Header }}{{ .Legal.Header }}{{ end }}

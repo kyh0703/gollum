@@ -1,6 +1,6 @@
 package templates
 
-var ServiceTemplate = `
+var Service = `
 package {{ .Name }}
 
 type {{ .Name }}Service struct{}
