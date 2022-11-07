@@ -7,8 +7,6 @@ import (
 
 {{ if eq .Framework "fiber" }}
 	"github.com/gofiber/fiber/v2"
-{{ else if eq .Framework "gin" }}
-	"github.com/gin-gonic/gin"
 {{ end }}
 )
 
@@ -28,9 +26,6 @@ func (ctrl *{{ .Name | ToLower }}Controller) Path() string {
 
 {{ if eq .Framework "fiber" }}
 func (ctrl *{{ .Name | ToLower }}Controller) Routes(router fiber.Router) {
-}
-{{ else if eq .Framework "gin" }}
-func (ctrl *{{ .Name | ToLower }}Controller) Routes(router gin.Router) {
 }
 {{ end }}
 `
