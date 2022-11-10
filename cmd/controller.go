@@ -19,9 +19,8 @@ func init() {
 type ControllerCommand struct {
 	util.Selector
 	util.TemplateFile
-	Name      string
-	Command   *cobra.Command
-	Framework string
+	Name    string
+	Command *cobra.Command
 }
 
 func NewControllerCommand() *ControllerCommand {
@@ -41,12 +40,9 @@ func (cmd *ControllerCommand) Run(command *cobra.Command, args []string) {
 		command.Help()
 		return
 	}
+
 	cmd.Name = args[0]
-	result, err := cmd.SelectBox("framework", []string{"fiber", "gin"})
-	if err != nil {
-		cobra.CheckErr(err)
-	}
-	cmd.Framework = result
+
 	var (
 		path     = "routes/" + cmd.Name
 		fileName = cmd.Name + "_controller.go"
@@ -54,13 +50,19 @@ func (cmd *ControllerCommand) Run(command *cobra.Command, args []string) {
 	if err := cmd.MakeDir(path); err != nil {
 		cobra.CheckErr(err)
 	}
+
 	file, err := cmd.MakeFile(path, fileName)
 	if err != nil {
 		cobra.CheckErr(err)
 	}
 	defer file.Close()
-	err = cmd.WriteFileWithTemplate(file, "controller", templates.Controller, cmd)
-	if err != nil {
+
+	if err := cmd.WriteFileWithTemplate(
+		file,
+		"controller",
+		templates.Controller,
+		cmd,
+	); err != nil {
 		cobra.CheckErr(err)
 	}
 }
