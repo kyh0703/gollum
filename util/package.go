@@ -37,3 +37,7 @@ func (pkg *Package) GetGoModFromExec() (*GoMod, error) {
 func (pkg *Package) ExecGoGet(mod string) error {
 	return exec.Command("go", "get", mod).Run()
 }
+
+func (pkg *Package) ExecSwagger() error {
+	return nil
+}
